@@ -1,4 +1,4 @@
-# FA vs EFA Data Analysis
+# FA vs EFA Data Analysis & Results
 
 Quick analysis tool to compare Firefly Algorithm (FA) vs Enhanced Firefly Algorithm (EFA) performance and perform statistical analysis.
 
@@ -7,8 +7,8 @@ Quick analysis tool to compare Firefly Algorithm (FA) vs Enhanced Firefly Algori
 ### 1. Clone the project
 
 ```bash
-git clone <your-repo-url>
-cd <project-folder>
+git clone https://github.com/CS-4-3-Group-4/ThesisAnalysisResults.git
+cd ThesisAnalysisResults
 ```
 
 ### 2. Create and activate virtual environment
@@ -35,7 +35,7 @@ pip install -r requirements.txt
 
 ## Usage
 
-Run any of these scripts to generate comparison graphs:
+Run any of these scripts to generate results on respective SOPs:
 
 ```bash
 python pc_time.py      # Execution time analysis
