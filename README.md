@@ -35,21 +35,84 @@ pip install -r requirements.txt
 
 ## Usage
 
-Run any of these scripts to generate results on respective SOPs:
+Run the interactive CLI to select and run analyses:
 
 ```bash
-python pc_time.py      # Execution time analysis
-python pc_fitness.py   # Fitness score analysis
-python pc_memory.py    # Memory usage analysis
+python main.py
 ```
+
+The tool provides two analysis categories:
+
+### 📊 Percentage Change Analysis (SOP 1 & 2)
+
+-   Fitness Score % Change (SOP 1)
+-   Execution Time % Change (SOP 2)
+-   Memory Usage % Change (SOP 2)
+
+### 📈 Statistical Significance Testing (SOP 3 & 4)
+
+-   Fitness Score Significance Test (SOP 3)
+-   Execution Time Significance Test (SOP 4)
+-   Memory Usage Significance Test (SOP 4)
 
 ## Input Data
 
-Place your CSV files in the `comparison/` folder:
+Place your CSV files in the `data/` folder with the following structure:
 
--   `FA-vs-EFA-executionTime-comparison.csv`
--   `FA-vs-EFA-fitness-comparison.csv`
--   `FA-vs-EFA-memory-comparison.csv`
+```
+data/
+├── FA-vs-EFA-fitness-comparison.csv
+├── FA-vs-EFA-executionTime-comparison.csv
+└── FA-vs-EFA-memory-comparison.csv
+```
+
+## Output
+
+Results are saved in the `results/` directory:
+
+```
+results/
+├── sop1/                          # Fitness analysis
+│   ├── fitness_comparison.png
+│   ├── mean_fitness_comparison.png
+│   └── results.txt
+└── sop2/
+    ├── time/                      # Time analysis
+    │   ├── time_comparison.png
+    │   ├── mean_time_comparison.png
+    │   └── results.txt
+    └── memory/                    # Memory analysis
+        ├── memory_comparison.png
+        ├── mean_memory_comparison.png
+        └── results.txt
+```
+
+## Project Structure
+
+```
+project/
+├── main.py                        # Interactive CLI entry point
+├── config.py                      # Configuration settings
+├── percentage_change/             # SOP 1 & 2 analyses
+│   ├── __init__.py
+│   ├── fitness.py
+│   ├── time.py
+│   └── memory.py
+├── significance/                  # SOP 3 & 4 analyses
+│   ├── __init__.py
+│   ├── fitness.py
+│   ├── time.py
+│   └── memory.py
+├── data/                          # Input CSV files
+├── results/                       # Output graphs and results
+├── styles/                        # Matplotlib styling
+│   ├── fonts/
+│   │   └── GeistMono-Regular.ttf
+│   └── themes/
+│       ├── rose-pine-dawn.mplstyle
+│       └── rose-pine.mplstyle
+└── requirements.txt
+```
 
 ## That's it!
 
