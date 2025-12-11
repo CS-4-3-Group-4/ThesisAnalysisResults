@@ -57,10 +57,10 @@ The tool provides two analysis categories:
 
 ## Input Data
 
-Place your CSV files in the `data/` folder with the following structure:
+Place your CSV files in the `comparison/` folder with the following structure:
 
 ```
-data/
+comparison/
 ├── FA-vs-EFA-fitness-comparison.csv
 ├── FA-vs-EFA-executionTime-comparison.csv
 └── FA-vs-EFA-memory-comparison.csv
@@ -103,7 +103,7 @@ project/
 │   ├── fitness.py
 │   ├── time.py
 │   └── memory.py
-├── data/                          # Input CSV files
+├── comparison/                          # Input CSV files
 ├── results/                       # Output graphs and results
 ├── styles/                        # Matplotlib styling
 │   ├── fonts/
