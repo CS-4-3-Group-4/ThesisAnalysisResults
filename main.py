@@ -1,7 +1,23 @@
 import questionary
+from questionary import Style
 import sys
 import percentage_change
 import significance
+
+# Custom style with colors
+custom_style = Style(
+    [
+        ("qmark", "fg:#673ab7 bold"),  # Purple question mark
+        ("question", "bold"),  # Bold question text
+        ("answer", "bold"),  # Bold answer text
+        ("pointer", "fg:#673ab7 bold"),  # Purple pointer (>)
+        ("highlighted", "fg:#673ab7 bold"),  # Purple highlighted option
+        ("selected", "fg:#cc5454"),  # Light red selected
+        ("separator", "fg:#cc5454"),  # Light red separator
+        ("instruction", ""),  # Default instruction
+        ("text", ""),  # Default text
+    ]
+)
 
 
 def main():
@@ -19,6 +35,7 @@ def main():
                     questionary.Separator(),
                     "❌ Exit",
                 ],
+                style=custom_style,
             ).ask()
 
             if category is None or category == "❌ Exit":
@@ -32,7 +49,7 @@ def main():
                 run_significance_menu()
 
             continue_choice = questionary.confirm(
-                "Return to main menu?", default=True
+                "Return to main menu?", default=True, style=custom_style
             ).ask()
 
             if not continue_choice:
@@ -55,6 +72,7 @@ def run_percentage_change_menu():
             questionary.Separator(),
             "← Back to Main Menu",
         ],
+        style=custom_style,
     ).ask()
 
     if choice is None or "Back" in choice:
@@ -81,6 +99,7 @@ def run_significance_menu():
             questionary.Separator(),
             "← Back to Main Menu",
         ],
+        style=custom_style,
     ).ask()
 
     if choice is None or "Back" in choice:
