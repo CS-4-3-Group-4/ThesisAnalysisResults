@@ -70,11 +70,12 @@ def analyze_metric(metric_type: str):
     with open(summary_path, "w") as f:
         f.write(f"Metric: {metric_name}\n")
         f.write(f"{col1} vs {col2}\n\n")
-        f.write(f"Mean Difference: {mean_diff:.6f}\n")
-        f.write(f"Standard Deviation: {std_diff:.6f}\n")
-        f.write(f"Standard Error: {sem_diff:.6f}\n")
-        f.write(f"t-Statistic: {t_stat_manual:.6f}\n")
-        f.write(f"p-Value: {p_val:.6f}\n")
+        f.write(f"Mean Difference: {mean_diff}\n")
+        f.write(f"Standard Deviation: {std_diff}\n")
+        f.write(f"Standard Error: {sem_diff}\n")
+        f.write(f"t-Statistic (manual): {t_stat_manual}\n")
+        f.write(f"t-Statistic (scipy): {t_stat}\n")
+        f.write(f"p-Value: {p_val}\n")
 
     print(f"\n📝 Summary saved to: {summary_path}")
 
