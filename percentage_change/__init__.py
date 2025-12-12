@@ -1,4 +1,7 @@
-"""Percentage Change Analysis modules (SOP 1 & 2)."""
+"""
+Percentage Change Analysis modules (SOP 1 & 2).
+Contains percentage change analyses for fitness, time, and memory metrics.
+"""
 
 from . import fitness
 from . import time
