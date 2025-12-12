@@ -79,6 +79,12 @@ OUTPUT_FILES = {
     "results": "results.txt",
 }
 
+# ==================== STATISTICAL SETTINGS ====================
+
+STATISTICAL_SETTINGS = {
+    "alpha": 0.05,  # Significance level
+}
+
 # ==================== HELPER FUNCTIONS ====================
 
 
