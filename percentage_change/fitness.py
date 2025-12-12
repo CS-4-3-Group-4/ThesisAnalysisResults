@@ -40,8 +40,8 @@ def run():
     # Calculate mean change (%)
     mean_change_percent = ((mean_efa - mean_fa) / mean_fa) * 100
 
-    print(f"Mean FA Fitness Score: {mean_fa:.2f}")
-    print(f"Mean EFA Fitness Score: {mean_efa:.2f}")
+    print(f"Mean FA Fitness Score: {mean_fa:.6f}")
+    print(f"Mean EFA Fitness Score: {mean_efa:.6f}")
     print(f"Mean Fitness Score Change: {mean_change_percent:.2f}%")
     print("\n" + "=" * 50)
 
@@ -101,7 +101,7 @@ def run():
         ax2.text(
             bar.get_x() + bar.get_width() / 2.0,
             height,
-            f"{height:.2f}",
+            f"{height:.6f}",
             ha="center",
             va="bottom",
             fontsize=10,
@@ -128,8 +128,8 @@ def run():
     with open(results_path, "w") as f:
         f.write("FA vs EFA Fitness Score Analysis Results\n")
         f.write("=" * 50 + "\n\n")
-        f.write(f"Mean FA Fitness Score: {mean_fa:.2f}\n")
-        f.write(f"Mean EFA Fitness Score: {mean_efa:.2f}\n")
+        f.write(f"Mean FA Fitness Score: {mean_fa:.6f}\n")
+        f.write(f"Mean EFA Fitness Score: {mean_efa:.6f}\n")
         f.write(f"Mean Fitness Score Change: {mean_change_percent:.2f}%\n")
 
     print(f"✓ Saved: {results_path}")
