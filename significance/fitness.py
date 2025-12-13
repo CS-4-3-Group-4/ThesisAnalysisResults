@@ -103,10 +103,26 @@ def run():
         median = data.median()
         q3 = data.quantile(0.75)
 
+        # Calculate whisker positions (1.5 * IQR method)
+        iqr = q3 - q1
+        lower_whisker = data[data >= q1 - 1.5 * iqr].min()
+        upper_whisker = data[data <= q3 + 1.5 * iqr].max()
+
         # Position for text (offset to the right of each box)
         x_offset = 0.35
 
-        # Add text annotations
+        # Add text annotations for whiskers
+        ax.text(
+            i + x_offset,
+            lower_whisker,
+            f"Lower: {lower_whisker:.6f}",
+            fontsize=8,
+            va="center",
+            ha="left",
+            color="gray",
+        )
+
+        # Add text annotations for quartiles
         ax.text(i + x_offset, q1, f"Q1: {q1:.6f}", fontsize=8, va="center", ha="left")
         ax.text(
             i + x_offset,
@@ -118,6 +134,17 @@ def run():
             fontweight="bold",
         )
         ax.text(i + x_offset, q3, f"Q3: {q3:.6f}", fontsize=8, va="center", ha="left")
+
+        # Add text annotation for upper whisker
+        ax.text(
+            i + x_offset,
+            upper_whisker,
+            f"Upper: {upper_whisker:.6f}",
+            fontsize=8,
+            va="center",
+            ha="left",
+            color="gray",
+        )
 
     fig.tight_layout()
 
