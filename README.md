@@ -76,14 +76,21 @@ results/
 │   ├── fitness_comparison.png
 │   ├── mean_fitness_comparison.png
 │   └── results.txt
-└── sop2/
-    ├── time/                      # Time analysis
-    │   ├── time_comparison.png
-    │   ├── mean_time_comparison.png
+├── sop2/
+│   ├── time/                      # Time analysis
+│   │   ├── time_comparison.png
+│   │   ├── mean_time_comparison.png
+│   │   └── results.txt
+│   └── memory/                    # Memory analysis
+│       ├── memory_comparison.png
+│       ├── mean_memory_comparison.png
+│       └── results.txt
+├── sop3/                          # Fitness significance test
+│   └── results.txt
+└── sop4/
+    ├── time/                      # Execution time significance test
     │   └── results.txt
-    └── memory/                    # Memory analysis
-        ├── memory_comparison.png
-        ├── mean_memory_comparison.png
+    └── memory/                    # Memory usage significance test
         └── results.txt
 ```
 
