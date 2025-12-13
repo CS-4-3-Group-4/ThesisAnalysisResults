@@ -86,39 +86,47 @@ results/
 │       ├── mean_memory_comparison.png
 │       └── results.txt
 ├── sop3/                          # Fitness significance test
+│   ├── fitness_boxplot.png
+│   ├── boxplot_statistics.txt
 │   └── results.txt
 └── sop4/
     ├── time/                      # Execution time significance test
+    │   ├── time_boxplot.png
+    │   ├── boxplot_statistics.txt
     │   └── results.txt
     └── memory/                    # Memory usage significance test
+        ├── memory_boxplot.png
+        ├── boxplot_statistics.txt
         └── results.txt
 ```
 
 ## Project Structure
 
 ```
+
 project/
-├── main.py                        # Interactive CLI entry point
-├── config.py                      # Configuration settings
-├── percentage_change/             # SOP 1 & 2 analyses
-│   ├── __init__.py
-│   ├── fitness.py
-│   ├── time.py
-│   └── memory.py
-├── significance/                  # SOP 3 & 4 analyses
-│   ├── __init__.py
-│   ├── fitness.py
-│   ├── time.py
-│   └── memory.py
-├── comparison/                          # Input CSV files
-├── results/                       # Output graphs and results
-├── styles/                        # Matplotlib styling
-│   ├── fonts/
-│   │   └── GeistMono-Regular.ttf
-│   └── themes/
-│       ├── rose-pine-dawn.mplstyle
-│       └── rose-pine.mplstyle
+├── main.py # Interactive CLI entry point
+├── config.py # Configuration settings
+├── percentage_change/ # SOP 1 & 2 analyses
+│ ├── **init**.py
+│ ├── fitness.py
+│ ├── time.py
+│ └── memory.py
+├── significance/ # SOP 3 & 4 analyses
+│ ├── **init**.py
+│ ├── fitness.py
+│ ├── time.py
+│ └── memory.py
+├── comparison/ # Input CSV files
+├── results/ # Output graphs and results
+├── styles/ # Matplotlib styling
+│ ├── fonts/
+│ │ └── GeistMono-Regular.ttf
+│ └── themes/
+│ ├── rose-pine-dawn.mplstyle
+│ └── rose-pine.mplstyle
 └── requirements.txt
+
 ```
 
 ## That's it!
