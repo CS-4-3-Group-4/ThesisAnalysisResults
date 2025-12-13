@@ -79,7 +79,7 @@ def run():
     # ==================== FIGURE: Box Plot Comparison ====================
     print("\n" + "=" * 50)
     print("Creating Box Plot...")
-    fig, ax = plt.subplots(figsize=(10, 6))
+    fig, ax = plt.subplots(figsize=(12, 6))
 
     # Prepare data for box plot
     data_to_plot = [df[cols["fa"]], df[cols["efa"]]]
@@ -97,53 +97,42 @@ def run():
     ax.set_title("FA vs EFA Fitness Score Distribution")
     ax.grid(True, alpha=1.0, axis="y")
 
-    # Add statistical annotations
-    for i, (data, label) in enumerate(zip(data_to_plot, ["FA", "EFA"]), start=1):
+    # Add labels beside each box plot element
+    for i, (data, label) in enumerate(zip(data_to_plot, ["FA", "EFA"])):
+        x_pos = i + 1  # Box plot position (1 for FA, 2 for EFA)
+
         q1 = data.quantile(0.25)
         median = data.median()
         q3 = data.quantile(0.75)
-
-        # Calculate whisker positions (1.5 * IQR method)
         iqr = q3 - q1
         lower_whisker = data[data >= q1 - 1.5 * iqr].min()
         upper_whisker = data[data <= q3 + 1.5 * iqr].max()
 
-        # Position for text (offset to the right of each box)
-        x_offset = 0.35
-
-        # Add text annotations for whiskers
+        # Label each element to the right of the box
+        offset = 0.35  # Distance from box center
         ax.text(
-            i + x_offset,
-            lower_whisker,
-            f"Lower: {lower_whisker:.6f}",
-            fontsize=8,
-            va="center",
-            ha="left",
-            color="gray",
-        )
-
-        # Add text annotations for quartiles
-        ax.text(i + x_offset, q1, f"Q1: {q1:.6f}", fontsize=8, va="center", ha="left")
-        ax.text(
-            i + x_offset,
-            median,
-            f"Median: {median:.6f}",
-            fontsize=8,
-            va="center",
-            ha="left",
-            fontweight="bold",
-        )
-        ax.text(i + x_offset, q3, f"Q3: {q3:.6f}", fontsize=8, va="center", ha="left")
-
-        # Add text annotation for upper whisker
-        ax.text(
-            i + x_offset,
+            x_pos + offset,
             upper_whisker,
             f"Upper: {upper_whisker:.6f}",
-            fontsize=8,
             va="center",
-            ha="left",
-            color="gray",
+            fontsize=8,
+        )
+        ax.text(x_pos + offset, q3, f"Q3: {q3:.6f}", va="center", fontsize=8)
+        ax.text(
+            x_pos + offset,
+            median,
+            f"Median: {median:.6f}",
+            va="center",
+            fontsize=8,
+            fontweight="bold",
+        )
+        ax.text(x_pos + offset, q1, f"Q1: {q1:.6f}", va="center", fontsize=8)
+        ax.text(
+            x_pos + offset,
+            lower_whisker,
+            f"Lower: {lower_whisker:.6f}",
+            va="center",
+            fontsize=8,
         )
 
     fig.tight_layout()
