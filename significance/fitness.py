@@ -1,3 +1,6 @@
+import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
+import matplotlib as mpl
 import pandas as pd
 import numpy as np
 from scipy.stats import ttest_rel
@@ -7,6 +10,20 @@ import os
 
 def run():
     """Run the fitness score significance test (SOP 3)."""
+
+    # ==================== SETUP ====================
+
+    # Register the font with Matplotlib
+    fm.fontManager.addfont(config.FONT_PATH)
+
+    # Get the internal font name (required!)
+    font_prop = fm.FontProperties(fname=config.FONT_PATH)
+    font_name = font_prop.get_name()
+
+    # Set globally
+    mpl.rcParams["font.family"] = font_name
+
+    plt.style.use(config.STYLE_PATH)
 
     print("=" * 50)
     print("SOP 3: Fitness Score Significance Test")
@@ -59,10 +76,59 @@ def run():
 
     output_dir = config.get_output_dir("sop3")
 
+    # ==================== FIGURE: Box Plot Comparison ====================
+    print("\n" + "=" * 50)
+    print("Creating Box Plot...")
+    fig, ax = plt.subplots(figsize=(10, 6))
+
+    # Prepare data for box plot
+    data_to_plot = [df[cols["fa"]], df[cols["efa"]]]
+    box_colors = [config.COLORS["fa"], config.COLORS["efa"]]
+
+    bp = ax.boxplot(data_to_plot, labels=["FA", "EFA"], patch_artist=True, widths=0.6)
+
+    # Color the boxes
+    for patch, color in zip(bp["boxes"], box_colors):
+        patch.set_facecolor(color)
+        patch.set_alpha(0.7)
+
+    # Style the plot
+    ax.set_ylabel("Fitness Score")
+    ax.set_title("FA vs EFA Fitness Score Distribution")
+    ax.grid(True, alpha=1.0, axis="y")
+
+    # Add statistical annotations
+    for i, (data, label) in enumerate(zip(data_to_plot, ["FA", "EFA"]), start=1):
+        q1 = data.quantile(0.25)
+        median = data.median()
+        q3 = data.quantile(0.75)
+
+        # Position for text (offset to the right of each box)
+        x_offset = 0.35
+
+        # Add text annotations
+        ax.text(i + x_offset, q1, f"Q1: {q1:.6f}", fontsize=8, va="center", ha="left")
+        ax.text(
+            i + x_offset,
+            median,
+            f"Median: {median:.6f}",
+            fontsize=8,
+            va="center",
+            ha="left",
+            fontweight="bold",
+        )
+        ax.text(i + x_offset, q3, f"Q3: {q3:.6f}", fontsize=8, va="center", ha="left")
+
+    fig.tight_layout()
+
+    # Save figure
+    output_path = os.path.join(output_dir, "fitness_boxplot.png")
+    fig.savefig(output_path, dpi=300, bbox_inches="tight")
+    print(f"✓ Saved: {output_path}")
+
     # ==================== SAVE RESULTS TO TEXT FILE ====================
 
-    print("\n" + "=" * 50)
-    print("Saving results...")
+    print("Creating results text file...")
     results_path = os.path.join(output_dir, config.OUTPUT_FILES["results"])
 
     with open(results_path, "w") as f:
@@ -89,8 +155,12 @@ def run():
             )
 
     print(f"✓ Saved: {results_path}")
+
     print("=" * 50)
-    print("Analysis complete!")
+    print("Analysis complete!, All files saved successfully!")
+
+    # Show plot
+    plt.show()
 
 
 if __name__ == "__main__":
