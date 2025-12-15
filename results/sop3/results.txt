@@ -1,0 +1,17 @@
+FA vs EFA Fitness Score Significance Test (SOP 3)
+==================================================
+
+Comparing: FA (Fitness Score) vs EFA (Fitness Score)
+Number of paired samples: 30
+
+Statistical Results:
+--------------------------------------------------
+Mean Difference: -0.04905219999999995
+Standard Deviation: 0.030532243742617766
+Standard Error of Mean: 0.005574399543025903
+t-Statistic (manual): -8.799548654772845
+t-Statistic (scipy): -8.799548654772845
+p-Value: 1.1045542153007998e-09 (1.10e-09)
+
+Result: SIGNIFICANT (p < 0.01)
+The difference between FA and EFA is statistically significant.

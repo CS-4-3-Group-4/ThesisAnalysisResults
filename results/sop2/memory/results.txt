@@ -1,0 +1,6 @@
+FA vs EFA Memory Usage Analysis Results
+==================================================
+
+Mean FA Memory Usage: 168011235.73 bytes
+Mean EFA Memory Usage: 85581510.93 bytes
+Mean Memory Usage Change: -49.06%

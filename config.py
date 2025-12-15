@@ -83,7 +83,7 @@ OUTPUT_FILES = {
 # ==================== STATISTICAL SETTINGS ====================
 
 STATISTICAL_SETTINGS = {
-    "alpha": 0.05,  # Significance level
+    "alpha": 0.01,  # Significance level
 }
 
 # ==================== HELPER FUNCTIONS ====================

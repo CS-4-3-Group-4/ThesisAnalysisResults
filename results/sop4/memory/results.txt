@@ -1,0 +1,17 @@
+FA vs EFA Memory Usage Significance Test (SOP 4)
+==================================================
+
+Comparing: FA (Memory Usage (bytes)) vs EFA (Memory Usage (bytes))
+Number of paired samples: 30
+
+Statistical Results:
+--------------------------------------------------
+Mean Difference: 82429724.8 bytes
+Standard Deviation: 534306.7667611801 bytes
+Standard Error of Mean: 97550.62292758329 bytes
+t-Statistic (manual): 844.9943457684705
+t-Statistic (scipy): 844.9943457684703
+p-Value: 3.1100048080361993e-65 (3.11e-65)
+
+Result: SIGNIFICANT (p < 0.01)
+The difference between FA and EFA is statistically significant.

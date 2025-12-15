@@ -1,0 +1,17 @@
+FA vs EFA Execution Time Significance Test (SOP 4)
+==================================================
+
+Comparing: FA (Execution Time (ms)) vs EFA (Execution Time (ms))
+Number of paired samples: 30
+
+Statistical Results:
+--------------------------------------------------
+Mean Difference: -353.7056666666666 ms
+Standard Deviation: 64.12737032969855 ms
+Standard Error of Mean: 11.708002427687799 ms
+t-Statistic (manual): -30.210590478714103
+t-Statistic (scipy): -30.210590478714103
+p-Value: 1.8051784245699072e-23 (1.81e-23)
+
+Result: SIGNIFICANT (p < 0.01)
+The difference between FA and EFA is statistically significant.
