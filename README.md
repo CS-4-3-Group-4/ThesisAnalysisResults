@@ -41,6 +41,12 @@ Run the interactive CLI to select and run analyses:
 python main.py
 ```
 
+### 4. Update dependencies
+
+```bash
+pip freeze > requirements.txt
+```
+
 The tool provides two analysis categories:
 
 ### 📊 Percentage Change Analysis (SOP 1 & 2)
