@@ -43,10 +43,21 @@ def run():
 
     # ==================== STATISTICAL CALCULATIONS ====================
 
+    # Calculate statistics for FA
+    mean_fa = df[cols["fa"]].mean()
+    std_fa = df[cols["fa"]].std(ddof=1)
+    var_fa = df[cols["fa"]].var(ddof=1)
+
+    # Calculate statistics for EFA
+    mean_efa = df[cols["efa"]].mean()
+    std_efa = df[cols["efa"]].std(ddof=1)
+    var_efa = df[cols["efa"]].var(ddof=1)
+
     # Calculate difference (FA - EFA)
     diff = df[cols["fa"]] - df[cols["efa"]]
     mean_diff = diff.mean()
     std_diff = diff.std(ddof=1)
+    var_diff = diff.var(ddof=1)
     sem_diff = std_diff / np.sqrt(len(diff))
     t_stat_manual = mean_diff / sem_diff
 
@@ -89,10 +100,20 @@ def run():
     print(f"\nAnalyzing: {cols['fa']} vs {cols['efa']}")
     print(f"Number of paired samples: {len(df)}")
     print("\n" + "-" * 50)
+    print("Descriptive Statistics:")
+    print("-" * 50)
+    print(f"FA Mean: {mean_fa:.6f}")
+    print(f"FA Standard Deviation: {std_fa:.6f}")
+    print(f"FA Variance: {var_fa:.6f}")
+    print(f"\nEFA Mean: {mean_efa:.6f}")
+    print(f"EFA Standard Deviation: {std_efa:.6f}")
+    print(f"EFA Variance: {var_efa:.6f}")
+    print("\n" + "-" * 50)
     print("Statistical Results:")
     print("-" * 50)
     print(f"Mean Difference: {mean_diff:.6f}")
-    print(f"Standard Deviation: {std_diff:.6f}")
+    print(f"Standard Deviation (Diff): {std_diff:.6f}")
+    print(f"Variance (Diff): {var_diff:.6f}")
     print(f"Standard Error of Mean: {sem_diff:.6f}")
     print(f"t-Statistic (manual): {t_stat_manual:.6f}")
     print(f"t-Statistic (scipy): {t_stat:.6f}")
@@ -116,10 +137,19 @@ def run():
         f.write("=" * 50 + "\n\n")
         f.write(f"Comparing: {cols['fa']} vs {cols['efa']}\n")
         f.write(f"Number of paired samples: {len(df)}\n\n")
+        f.write("Descriptive Statistics:\n")
+        f.write("-" * 50 + "\n")
+        f.write(f"FA Mean: {mean_fa}\n")
+        f.write(f"FA Standard Deviation: {std_fa}\n")
+        f.write(f"FA Variance: {var_fa}\n")
+        f.write(f"\nEFA Mean: {mean_efa}\n")
+        f.write(f"EFA Standard Deviation: {std_efa}\n")
+        f.write(f"EFA Variance: {var_efa}\n\n")
         f.write("Statistical Results:\n")
         f.write("-" * 50 + "\n")
         f.write(f"Mean Difference: {mean_diff}\n")
-        f.write(f"Standard Deviation: {std_diff}\n")
+        f.write(f"Standard Deviation (Diff): {std_diff}\n")
+        f.write(f"Variance (Diff): {var_diff}\n")
         f.write(f"Standard Error of Mean: {sem_diff}\n")
         f.write(f"t-Statistic (manual): {t_stat_manual}\n")
         f.write(f"t-Statistic (scipy): {t_stat}\n")
