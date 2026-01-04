@@ -166,6 +166,54 @@ def run():
 
     print(f"✓ Saved: {results_path}")
 
+    # ==================== SAVE CSV RESULTS ====================
+
+    print("\nCreating results CSV file...")
+
+    # Create results dataframe
+    results_df = pd.DataFrame(
+        {
+            "Metric": [
+                "N_Samples",
+                "FA_Mean_bytes",
+                "FA_StdDev_bytes",
+                "FA_Variance_bytes²",
+                "EFA_Mean_bytes",
+                "EFA_StdDev_bytes",
+                "EFA_Variance_bytes²",
+                "Mean_Difference_bytes",
+                "Diff_StdDev_bytes",
+                "Diff_Variance_bytes²",
+                "Standard_Error_bytes",
+                "t_Statistic",
+                "p_Value",
+                "Significant",
+                "Alpha_Level",
+            ],
+            "Value": [
+                len(df),
+                mean_fa,
+                std_fa,
+                var_fa,
+                mean_efa,
+                std_efa,
+                var_efa,
+                mean_diff,
+                std_diff,
+                var_diff,
+                sem_diff,
+                t_stat,
+                p_val,
+                "Yes" if p_val < alpha else "No",
+                alpha,
+            ],
+        }
+    )
+
+    results_csv_path = os.path.join(output_dir, "statistical_results.csv")
+    results_df.to_csv(results_csv_path, index=False)
+    print(f"✓ Saved: {results_csv_path}")
+
     # ==================== BOX PLOT VISUALIZATION ====================
 
     print("\n" + "=" * 50)
@@ -230,6 +278,36 @@ def run():
             f.write("\n" + "=" * 60 + "\n\n")
 
     print(f"✓ Saved: {boxplot_stats_path}")
+
+    # ==================== SAVE BOX PLOT STATISTICS CSV ====================
+
+    print("Creating box plot statistics CSV file...")
+
+    # Create box plot statistics dataframe
+    boxplot_data = []
+    for label in ["FA", "EFA"]:
+        stats = box_stats[label]
+        boxplot_data.append(
+            {
+                "Group": label,
+                "Minimum_bytes": stats["min"],
+                "Lower_Fence_bytes": stats["lower_fence"],
+                "Lower_Whisker_bytes": stats["lower_whisker"],
+                "Q1_bytes": stats["q1"],
+                "Median_bytes": stats["median"],
+                "Q3_bytes": stats["q3"],
+                "Upper_Whisker_bytes": stats["upper_whisker"],
+                "Upper_Fence_bytes": stats["upper_fence"],
+                "Maximum_bytes": stats["max"],
+                "IQR_bytes": stats["iqr"],
+                "N_Outliers": stats["n_outliers"],
+            }
+        )
+
+    boxplot_df = pd.DataFrame(boxplot_data)
+    boxplot_csv_path = os.path.join(output_dir, "boxplot_statistics.csv")
+    boxplot_df.to_csv(boxplot_csv_path, index=False)
+    print(f"✓ Saved: {boxplot_csv_path}")
 
     # ==================== COMPLETION ====================
 
