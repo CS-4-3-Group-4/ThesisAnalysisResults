@@ -3,40 +3,38 @@ Box Plot Statistics - Execution Time (SOP 4)
 
 FA Statistics:
 ------------------------------------------------------------
-Minimum:        5265.290000 ms
-Lower Fence:    5273.010000 ms
-Lower Whisker:  5274.930000 ms
-Q1 (25th):      5368.042500 ms
-Median (50th):  5414.295000 ms
-Q3 (75th):      5431.397500 ms
-Upper Whisker:  5471.100000 ms
-Upper Fence:    5526.430000 ms
-Maximum:        5471.100000 ms
-IQR:            63.355000 ms
+Minimum:        5179.510000 ms
+Lower Fence:    5231.182500 ms
+Lower Whisker:  5289.450000 ms
+Q1 (25th):      5358.262500 ms
+Median (50th):  5401.065000 ms
+Q3 (75th):      5442.982500 ms
+Upper Whisker:  5480.230000 ms
+Upper Fence:    5570.062500 ms
+Maximum:        5480.230000 ms
+IQR:            84.720000 ms
 
 Outliers:       1 detected
 Outlier values (ms):
-  1. 5265.290000
+  1. 5179.510000
 
 ============================================================
 
 EFA Statistics:
 ------------------------------------------------------------
-Minimum:        5645.430000 ms
-Lower Fence:    5687.105000 ms
-Lower Whisker:  5687.130000 ms
-Q1 (25th):      5737.437500 ms
-Median (50th):  5752.260000 ms
-Q3 (75th):      5770.992500 ms
-Upper Whisker:  5817.480000 ms
-Upper Fence:    5821.325000 ms
-Maximum:        5834.290000 ms
-IQR:            33.555000 ms
+Minimum:        5621.460000 ms
+Lower Fence:    5573.621250 ms
+Lower Whisker:  5621.460000 ms
+Q1 (25th):      5703.015000 ms
+Median (50th):  5726.745000 ms
+Q3 (75th):      5789.277500 ms
+Upper Whisker:  5833.210000 ms
+Upper Fence:    5918.671250 ms
+Maximum:        5833.210000 ms
+IQR:            86.262500 ms
 
-Outliers:       2 detected
-Outlier values (ms):
-  1. 5834.290000
-  2. 5645.430000
+Outliers:       0 detected
+  (No outliers detected)
 
 ============================================================
 

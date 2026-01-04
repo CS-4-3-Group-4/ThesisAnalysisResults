@@ -6,23 +6,23 @@ Number of paired samples: 30
 
 Descriptive Statistics:
 --------------------------------------------------
-FA Mean: 5396.648 ms
-FA Standard Deviation: 58.172907748040835 ms
-FA Variance: 3384.087195862069 ms²
+FA Mean: 5395.890666666667 ms
+FA Standard Deviation: 65.19165918372101 ms
+FA Variance: 4249.952427126436 ms²
 
-EFA Mean: 5750.353666666665 ms
-EFA Standard Deviation: 38.47533795718415 ms
-EFA Variance: 1480.3516309195356 ms²
+EFA Mean: 5740.175333333334 ms
+EFA Standard Deviation: 53.70782995207431 ms
+EFA Variance: 2884.5309981609307 ms²
 
 Statistical Results:
 --------------------------------------------------
-Mean Difference: -353.7056666666666 ms
-Standard Deviation (Diff): 64.12737032969855 ms
-Variance (Diff): 4112.319625402301 ms²
-Standard Error of Mean: 11.708002427687799 ms
-t-Statistic (manual): -30.210590478714103
-t-Statistic (scipy): -30.210590478714103
-p-Value: 1.8051784245699072e-23 (1.81e-23)
+Mean Difference: -344.28466666666657 ms
+Standard Deviation (Diff): 87.11366743131265 ms
+Variance (Diff): 7588.791053333343 ms²
+Standard Error of Mean: 15.904706906377687 ms
+t-Statistic (manual): -21.6467155725209
+t-Statistic (scipy): -21.646715572520897
+p-Value: 1.9029586939803344e-19 (1.90e-19)
 
 Result: SIGNIFICANT (p < 0.01)
 The difference between FA and EFA is statistically significant.

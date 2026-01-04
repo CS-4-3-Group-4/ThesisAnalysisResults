@@ -3,16 +3,16 @@ Box Plot Statistics - Fitness Score (SOP 3)
 
 FA Statistics:
 ------------------------------------------------------------
-Minimum:        2.260068
-Lower Fence:    2.236554
-Lower Whisker:  2.260068
-Q1 (25th):      2.294726
-Median (50th):  2.312686
-Q3 (75th):      2.333507
-Upper Whisker:  2.368468
-Upper Fence:    2.391679
-Maximum:        2.368468
-IQR:            0.038781
+Minimum:        2.247308
+Lower Fence:    2.213416
+Lower Whisker:  2.247308
+Q1 (25th):      2.274376
+Median (50th):  2.295005
+Q3 (75th):      2.315017
+Upper Whisker:  2.348135
+Upper Fence:    2.375978
+Maximum:        2.348135
+IQR:            0.040641
 
 Outliers:       0 detected
   (No outliers detected)
@@ -21,20 +21,21 @@ Outliers:       0 detected
 
 EFA Statistics:
 ------------------------------------------------------------
-Minimum:        2.321121
-Lower Fence:    2.310291
-Lower Whisker:  2.321121
-Q1 (25th):      2.349972
-Median (50th):  2.366211
-Q3 (75th):      2.376425
-Upper Whisker:  2.405948
-Upper Fence:    2.416106
-Maximum:        2.417586
-IQR:            0.026454
+Minimum:        2.307124
+Lower Fence:    2.310887
+Lower Whisker:  2.320674
+Q1 (25th):      2.340190
+Median (50th):  2.347307
+Q3 (75th):      2.359725
+Upper Whisker:  2.386512
+Upper Fence:    2.389028
+Maximum:        2.425890
+IQR:            0.019535
 
-Outliers:       1 detected
+Outliers:       2 detected
 Outlier values:
-  1. 2.417586
+  1. 2.425890
+  2. 2.307124
 
 ============================================================
 
