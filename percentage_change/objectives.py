@@ -42,6 +42,7 @@ def run():
     num_objectives = config.OBJECTIVE_SETTINGS["num_objectives"]
     y_limits = config.OBJECTIVE_SETTINGS["y_limits"]
     obj_names = config.OBJECTIVE_SETTINGS["objective_names"]
+    obj_descriptions = config.OBJECTIVE_SETTINGS["objective_descriptions"]
 
     # ==================== CREATE PLOTS FOR EACH OBJECTIVE ====================
 
@@ -102,10 +103,12 @@ def run():
         )
         ax1.set_xlabel("Run Number")
         ax1.set_ylabel(f"{obj_names[obj_num]} Score")
-        ax1.set_title(f"FA vs EFA {obj_names[obj_num]} Comparison")
+        ax1.set_title(
+            f"FA vs EFA: {obj_names[obj_num]} Comparison\n({obj_descriptions[obj_num]})"
+        )
         ax1.legend()
         ax1.grid(True, alpha=1.0)
-        ax1.set_ylim(y_limits)  # Set y-axis limits to 0-1
+        # Let matplotlib automatically determine y-axis limits
 
         fig1.tight_layout()
 
@@ -138,8 +141,11 @@ def run():
             )
 
         ax2.set_ylabel(f"Mean {obj_names[obj_num]} Score")
-        ax2.set_title(f"Mean {obj_names[obj_num]}: FA vs EFA")
-        ax2.set_ylim(0, 1.1)  # Set y-axis limits with some padding
+        ax2.set_title(
+            f"FA vs EFA: Mean {obj_names[obj_num]}\n({obj_descriptions[obj_num]})"
+        )
+        # Let matplotlib automatically determine y-axis limits with padding
+        ax2.set_ylim(0, max(means) * 1.15)
         ax2.grid(True, alpha=1.0, axis="y")
 
         fig2.tight_layout()

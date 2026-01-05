@@ -109,6 +109,13 @@ OBJECTIVE_SETTINGS = {
         4: "Objective 4",
         5: "Objective 5",
     },
+    "objective_descriptions": {
+        1: "Coverage Score",
+        2: "Prioritization Fulfillment",
+        3: "Distribution Imbalance Penalty",
+        4: "Demand Satisfaction",
+        5: "Displaced Population Index",
+    },
 }
 
 # ==================== HELPER FUNCTIONS ====================
