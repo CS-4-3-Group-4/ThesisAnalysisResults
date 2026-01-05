@@ -21,6 +21,7 @@ OUTPUT_DIRS = {
     "sop2": os.path.join(RESULTS_DIR, "sop2"),
     "sop3": os.path.join(RESULTS_DIR, "sop3"),
     "sop4": os.path.join(RESULTS_DIR, "sop4"),
+    "objectives": os.path.join(RESULTS_DIR, "objectives"),
 }
 
 # ==================== DATA FILES ====================
@@ -30,6 +31,7 @@ DATA_FILES = {
     "time": "FA-vs-EFA-executionTime-comparison.csv",
     "fitness": "FA-vs-EFA-fitness-comparison.csv",
     "memory": "FA-vs-EFA-memory-comparison.csv",
+    "objectives": "FA-vs-EFA-objectives-comparison.csv",
 }
 
 # Full paths to data files
@@ -65,6 +67,13 @@ COLUMNS = {
         "fa": "FA (Memory Usage (bytes))",
         "efa": "EFA (Memory Usage (bytes))",
     },
+    "objectives": {
+        "objective1": {"fa": "Objective1_FA", "efa": "Objective1_EFA"},
+        "objective2": {"fa": "Objective2_FA", "efa": "Objective2_EFA"},
+        "objective3": {"fa": "Objective3_FA", "efa": "Objective3_EFA"},
+        "objective4": {"fa": "Objective4_FA", "efa": "Objective4_EFA"},
+        "objective5": {"fa": "Objective5_FA", "efa": "Objective5_EFA"},
+    },
 }
 
 # ==================== OUTPUT FILE NAMES ====================
@@ -77,13 +86,36 @@ OUTPUT_FILES = {
     "memory_comparison": "memory_comparison.png",
     "mean_memory_comparison": "mean_memory_comparison.png",
     "results": "results.txt",
-    "boxplot_stats": "boxplot_statistics.txt",
+    # Objective-specific outputs
+    "objective_comparison": "objective_{}_comparison.png",
+    "mean_objective_comparison": "mean_objective_{}_comparison.png",
 }
 
 # ==================== STATISTICAL SETTINGS ====================
 
 STATISTICAL_SETTINGS = {
     "alpha": 0.01,  # Significance level
+}
+
+# ==================== OBJECTIVE SETTINGS ====================
+
+OBJECTIVE_SETTINGS = {
+    "num_objectives": 5,
+    "y_limits": (0, 1),  # Y-axis range for objective plots
+    "objective_names": {
+        1: "Objective 1",
+        2: "Objective 2",
+        3: "Objective 3",
+        4: "Objective 4",
+        5: "Objective 5",
+    },
+    "objective_descriptions": {
+        1: "Coverage Score",
+        2: "Prioritization Fulfillment",
+        3: "Distribution Imbalance Penalty",
+        4: "Demand Satisfaction",
+        5: "Displaced Population Index",
+    },
 }
 
 # ==================== HELPER FUNCTIONS ====================
@@ -96,7 +128,7 @@ def get_data_path(data_type):
     Parameters:
     -----------
     data_type : str
-        Type of data ('time', 'fitness', 'memory')
+        Type of data ('time', 'fitness', 'memory', 'objectives')
 
     Returns:
     --------
@@ -117,7 +149,7 @@ def get_output_dir(sop_name, subfolder=None):
     Parameters:
     -----------
     sop_name : str
-        Name of the SOP ('sop1', 'sop2', 'sop3', 'sop4')
+        Name of the SOP ('sop1', 'sop2', 'sop3', 'sop4', 'objectives')
     subfolder : str, optional
         Subfolder name within the SOP directory (e.g., 'time', 'fitness', 'memory')
 
@@ -147,7 +179,7 @@ def get_columns(data_type):
     Parameters:
     -----------
     data_type : str
-        Type of data ('time', 'fitness', 'memory')
+        Type of data ('time', 'fitness', 'memory', 'objectives')
 
     Returns:
     --------
