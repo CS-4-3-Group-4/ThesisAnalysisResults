@@ -69,6 +69,7 @@ def run_percentage_change_menu():
             "📊 Fitness Score % Change (SOP 1)",
             "⏱️  Execution Time % Change (SOP 2)",
             "💾 Memory Usage % Change (SOP 2)",
+            "🎯 Multi-Objective Analysis",
             questionary.Separator(),
             "← Back to Main Menu",
         ],
@@ -86,6 +87,8 @@ def run_percentage_change_menu():
         percentage_change.time.run()
     elif "Memory" in choice:
         percentage_change.memory.run()
+    elif "Objective" in choice:
+        percentage_change.objectives.run()
 
 
 def run_significance_menu():
