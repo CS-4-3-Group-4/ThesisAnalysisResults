@@ -1,0 +1,41 @@
+Box Plot Statistics - Memory Usage (SOP 4)
+============================================================
+
+FA Statistics:
+------------------------------------------------------------
+Minimum:        167977680.000000 bytes
+Lower Fence:    167977680.000000 bytes
+Lower Whisker:  167977680.000000 bytes
+Q1 (25th):      168012000.000000 bytes
+Median (50th):  168026796.000000 bytes
+Q3 (75th):      168034880.000000 bytes
+Upper Whisker:  168062336.000000 bytes
+Upper Fence:    168069200.000000 bytes
+Maximum:        168076064.000000 bytes
+IQR:            22880.000000 bytes
+
+Outliers:       2 detected
+Outlier values (bytes):
+  1. 168076064.000000
+  2. 168071488.000000
+
+============================================================
+
+EFA Statistics:
+------------------------------------------------------------
+Minimum:        84421744.000000 bytes
+Lower Fence:    84181585.000000 bytes
+Lower Whisker:  84421744.000000 bytes
+Q1 (25th):      85209922.000000 bytes
+Median (50th):  85611204.000000 bytes
+Q3 (75th):      85895480.000000 bytes
+Upper Whisker:  86528000.000000 bytes
+Upper Fence:    86923817.000000 bytes
+Maximum:        86528000.000000 bytes
+IQR:            685558.000000 bytes
+
+Outliers:       0 detected
+  (No outliers detected)
+
+============================================================
+

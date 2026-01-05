@@ -1,0 +1,16 @@
+Metric,Value
+N_Samples,30
+FA_Mean_bytes,168024961.86666667
+FA_StdDev_bytes,23381.31306264328
+FA_Variance_bytes²,546685800.5333332
+EFA_Mean_bytes,85562749.33333333
+EFA_StdDev_bytes,495559.1419158442
+EFA_Variance_bytes²,245578863136.3678
+Mean_Difference_bytes,82462212.53333333
+Diff_StdDev_bytes,493806.2393290079
+Diff_Variance_bytes²,243844602000.25748
+Standard_Error_bytes,90156.27210576412
+t_Statistic,914.6586322535081
+p_Value,3.126407073287266e-66
+Significant,Yes
+Alpha_Level,0.01

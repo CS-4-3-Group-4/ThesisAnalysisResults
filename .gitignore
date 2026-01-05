@@ -5,9 +5,6 @@
 __pycache__/
 *.pyc
 
-# Generated Results
-results/
-
 # Additional Files
 archive/
 

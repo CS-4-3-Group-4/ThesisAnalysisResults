@@ -77,12 +77,13 @@ OUTPUT_FILES = {
     "memory_comparison": "memory_comparison.png",
     "mean_memory_comparison": "mean_memory_comparison.png",
     "results": "results.txt",
+    "boxplot_stats": "boxplot_statistics.txt",
 }
 
 # ==================== STATISTICAL SETTINGS ====================
 
 STATISTICAL_SETTINGS = {
-    "alpha": 0.05,  # Significance level
+    "alpha": 0.01,  # Significance level
 }
 
 # ==================== HELPER FUNCTIONS ====================
