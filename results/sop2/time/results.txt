@@ -1,6 +1,0 @@
-FA vs EFA Execution Time Analysis Results
-==================================================
-
-Mean FA Execution Time: 5395.89 ms
-Mean EFA Execution Time: 5740.18 ms
-Mean Execution Time Change: 6.38%

@@ -1,6 +1,0 @@
-FA vs EFA Fitness Score Analysis Results
-==================================================
-
-Mean FA Fitness Score: 2.294332
-Mean EFA Fitness Score: 2.350182
-Mean Fitness Score Change: 2.43%
