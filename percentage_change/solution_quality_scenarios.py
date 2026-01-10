@@ -58,6 +58,8 @@ def run():
 
     # ==================== PROCESS EACH SCENARIO ====================
 
+    scenario_stats = []  # Store stats for summary
+
     for scenario_num in scenarios_to_process:
         print(f"\n{'='*50}")
         print(f"Processing Scenario {scenario_num}...")
@@ -105,6 +107,18 @@ def run():
         print(f"  Unchanged: {unchanged} ({unchanged/num_barangays*100:.1f}%)")
         print(f"  Degraded: {degraded} ({degraded/num_barangays*100:.1f}%)")
         print(f"  Avg change: {avg_change:.2f}%")
+
+        # Store stats for summary
+        scenario_stats.append(
+            {
+                "scenario": scenario_num,
+                "num_barangays": num_barangays,
+                "improved": improved,
+                "unchanged": unchanged,
+                "degraded": degraded,
+                "avg_change": avg_change,
+            }
+        )
 
         # ==================== CREATE VISUALIZATION ====================
 
@@ -186,11 +200,24 @@ def run():
             f"Scenario {scenario_num}: Barangay-Level Score Comparison (FA vs EFA)",
             fontsize=12,
             fontweight="bold",
+            pad=40,
         )
-        ax_main.legend(loc="lower right")
         ax_main.grid(True, alpha=0.3, axis="x")
         ax_main.set_xlim(0, 1.0)
+        ax_main.set_ylim(-0.5, num_barangays - 0.5)  # Remove extra padding on y-axis
         ax_main.invert_yaxis()  # Invert y-axis so High hazard is at top
+
+        # Add legend at figure level (between title and chart)
+        handles, labels_legend = ax_main.get_legend_handles_labels()
+        fig.legend(
+            handles,
+            labels_legend,
+            loc="upper center",
+            bbox_to_anchor=(0.5, 0.9825),
+            ncol=2,
+            frameon=False,
+            fontsize=9,
+        )
 
         # Add percentage change annotations
         for i, (idx, row) in enumerate(scenario_df.iterrows()):
@@ -237,6 +264,58 @@ def run():
         f"Successfully generated {len(scenarios_to_process)} scenario detail report(s)!"
     )
     print(f"Output directory: {output_dir}")
+
+    # ==================== CREATE OVERALL SUMMARY ====================
+
+    print("\nCreating overall summary file...")
+    summary_path = os.path.join(output_dir, "all_scenarios_summary.txt")
+
+    with open(summary_path, "w") as f:
+        f.write("Per-Scenario Barangay Detail Analysis - Overall Summary\n")
+        f.write("=" * 70 + "\n\n")
+        f.write(f"Total Scenarios Analyzed: {len(scenario_stats)}\n\n")
+
+        # Calculate totals
+        total_barangays = sum(s["num_barangays"] for s in scenario_stats)
+        total_improved = sum(s["improved"] for s in scenario_stats)
+        total_unchanged = sum(s["unchanged"] for s in scenario_stats)
+        total_degraded = sum(s["degraded"] for s in scenario_stats)
+        avg_change_overall = sum(s["avg_change"] for s in scenario_stats) / len(
+            scenario_stats
+        )
+
+        f.write("Overall Statistics:\n")
+        f.write("-" * 70 + "\n")
+        f.write(f"Total Barangay Allocations: {total_barangays}\n")
+        f.write(
+            f"Improved: {total_improved} ({total_improved/total_barangays*100:.1f}%)\n"
+        )
+        f.write(
+            f"Unchanged: {total_unchanged} ({total_unchanged/total_barangays*100:.1f}%)\n"
+        )
+        f.write(
+            f"Degraded: {total_degraded} ({total_degraded/total_barangays*100:.1f}%)\n"
+        )
+        f.write(f"Average Change Across All Scenarios: {avg_change_overall:+.2f}%\n\n")
+
+        f.write("Per-Scenario Breakdown:\n")
+        f.write("-" * 70 + "\n")
+        f.write(
+            f"{'Scenario':<10} {'Barangays':<12} {'Improved':<12} {'Unchanged':<12} {'Degraded':<12} {'Avg Change':<12}\n"
+        )
+        f.write("-" * 70 + "\n")
+
+        for stat in scenario_stats:
+            f.write(
+                f"{stat['scenario']:<10} "
+                f"{stat['num_barangays']:<12} "
+                f"{stat['improved']:<12} "
+                f"{stat['unchanged']:<12} "
+                f"{stat['degraded']:<12} "
+                f"{stat['avg_change']:+.2f}%\n"
+            )
+
+    print(f"✓ Saved: {summary_path}")
     print("=" * 50)
 
 
