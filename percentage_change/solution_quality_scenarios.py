@@ -203,7 +203,9 @@ def run():
             pad=40,
         )
         ax_main.grid(True, alpha=0.3, axis="x")
-        ax_main.set_xlim(0, 1.0)
+        ax_main.set_xlim(
+            0, scenario_df[[cols["fa_score"], cols["efa_score"]]].max().max()
+        )
         ax_main.set_ylim(-0.5, num_barangays - 0.5)  # Remove extra padding on y-axis
         ax_main.invert_yaxis()  # Invert y-axis so High hazard is at top
 
