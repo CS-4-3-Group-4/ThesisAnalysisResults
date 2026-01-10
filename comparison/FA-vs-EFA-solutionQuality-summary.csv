@@ -1,9 +1,9 @@
 Metric,Value
-FA Mean Solution Quality,24.37
-EFA Mean Solution Quality,25.06
-Mean Percentage Change,3.02
-Min Percentage Change,-8.79
-Max Percentage Change,15.26
-Improved Scenarios,19.0
+FA Mean Solution Quality,25.07
+EFA Mean Solution Quality,26.89
+Mean Percentage Change,7.3
+Min Percentage Change,2.26
+Max Percentage Change,11.94
+Improved Scenarios,3.0
 Unchanged Scenarios,0.0
-Degraded Scenarios,11.0
+Degraded Scenarios,0.0
