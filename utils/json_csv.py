@@ -38,9 +38,9 @@ def json_to_csvs():
         scenarios.append(
             {
                 "Scenario": scenario["scenarioNumber"],
-                "FA (Solution Quality)": round(scenario["faSolutionQuality"], 6),
-                "EFA (Solution Quality)": round(scenario["efaSolutionQuality"], 6),
-                "Percentage Change (%)": round(scenario["percentageChange"], 2),
+                "FA (Solution Quality)": scenario["faSolutionQuality"],
+                "EFA (Solution Quality)": scenario["efaSolutionQuality"],
+                "Percentage Change (%)": scenario["percentageChange"],
             }
         )
 
@@ -57,22 +57,22 @@ def json_to_csvs():
     print("Processing scenario summary...")
     scenario_summary = pd.DataFrame(
         [
-            {"Metric": "FA Mean Solution Quality", "Value": round(data["faMeanSQ"], 6)},
+            {"Metric": "FA Mean Solution Quality", "Value": data["faMeanSQ"]},
             {
                 "Metric": "EFA Mean Solution Quality",
-                "Value": round(data["efaMeanSQ"], 6),
+                "Value": data["efaMeanSQ"],
             },
             {
                 "Metric": "Mean Percentage Change",
-                "Value": round(data["meanPercentageChange"], 2),
+                "Value": data["meanPercentageChange"],
             },
             {
                 "Metric": "Min Percentage Change",
-                "Value": round(data["minPercentageChange"], 2),
+                "Value": data["minPercentageChange"],
             },
             {
                 "Metric": "Max Percentage Change",
-                "Value": round(data["maxPercentageChange"], 2),
+                "Value": data["maxPercentageChange"],
             },
             {"Metric": "Improved Scenarios", "Value": data["improvedScenarios"]},
             {"Metric": "Unchanged Scenarios", "Value": data["unchangedScenarios"]},
@@ -101,9 +101,9 @@ def json_to_csvs():
                     "FA_Required": barangay["barangayFAScore"]["required"],
                     "EFA_Allocated": barangay["barangayEFAScore"]["allocated"],
                     "EFA_Required": barangay["barangayEFAScore"]["required"],
-                    "FA_Score": round(barangay["barangayFAScore"]["score"], 6),
-                    "EFA_Score": round(barangay["barangayEFAScore"]["score"], 6),
-                    "Percentage_Change": round(barangay["percentageChange"], 2),
+                    "FA_Score": barangay["barangayFAScore"]["score"],
+                    "EFA_Score": barangay["barangayEFAScore"]["score"],
+                    "Percentage_Change": barangay["percentageChange"],
                 }
             )
 
