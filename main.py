@@ -71,6 +71,9 @@ def run_percentage_change_menu():
             "💾 Memory Usage % Change (SOP 2)",
             "🎯 Multi-Objective Analysis",
             questionary.Separator(),
+            "🏘️  Solution Quality % Change (SOP 1)",
+            "🏘️  Solution Quality - Per-Scenario Detail (30 PNGs)",
+            questionary.Separator(),
             "← Back to Main Menu",
         ],
         style=custom_style,
@@ -89,6 +92,10 @@ def run_percentage_change_menu():
         percentage_change.memory.run()
     elif "Objective" in choice:
         percentage_change.objectives.run()
+    elif "Per-Scenario Detail" in choice:
+        percentage_change.solution_quality_scenarios.run()
+    elif "Solution Quality" in choice:
+        percentage_change.solution_quality.run()
 
 
 def run_significance_menu():
@@ -99,6 +106,8 @@ def run_significance_menu():
             "📈 Fitness Score Significance Test (SOP 3)",
             "⏱️  Execution Time Significance Test (SOP 4)",
             "💾 Memory Usage Significance Test (SOP 4)",
+            questionary.Separator(),
+            "🏘️  Solution Quality Significance Test (SOP 3)",
             questionary.Separator(),
             "← Back to Main Menu",
         ],
@@ -116,6 +125,8 @@ def run_significance_menu():
         significance.time.run()
     elif "Memory" in choice:
         significance.memory.run()
+    elif "Solution Quality" in choice:
+        significance.solution_quality.run()
 
 
 if __name__ == "__main__":

@@ -32,6 +32,9 @@ DATA_FILES = {
     "fitness": "FA-vs-EFA-fitness-comparison.csv",
     "memory": "FA-vs-EFA-memory-comparison.csv",
     "objectives": "FA-vs-EFA-objectives-comparison.csv",
+    "solution_quality": "FA-vs-EFA-solutionQuality-comparison.csv",
+    "solution_quality_summary": "FA-vs-EFA-solutionQuality-summary.csv",
+    "barangay_solution_quality": "FA-vs-EFA-barangay-solutionQuality-comparison.csv",
 }
 
 # Full paths to data files
@@ -74,6 +77,23 @@ COLUMNS = {
         "objective4": {"fa": "Objective4_FA", "efa": "Objective4_EFA"},
         "objective5": {"fa": "Objective5_FA", "efa": "Objective5_EFA"},
     },
+    "solution_quality": {
+        "fa": "FA (Solution Quality)",
+        "efa": "EFA (Solution Quality)",
+    },
+    "barangay_solution_quality": {
+        "scenario": "Scenario",
+        "barangay_id": "Barangay_ID",
+        "barangay_name": "Barangay_Name",
+        "hazard_level": "Hazard_Level",
+        "fa_allocated": "FA_Allocated",
+        "fa_required": "FA_Required",
+        "efa_allocated": "EFA_Allocated",
+        "efa_required": "EFA_Required",
+        "fa_score": "FA_Score",
+        "efa_score": "EFA_Score",
+        "percentage_change": "Percentage_Change",
+    },
 }
 
 # ==================== OUTPUT FILE NAMES ====================
@@ -86,9 +106,21 @@ OUTPUT_FILES = {
     "memory_comparison": "memory_comparison.png",
     "mean_memory_comparison": "mean_memory_comparison.png",
     "results": "results.txt",
+    "boxplot_stats": "boxplot_statistics.txt",
     # Objective-specific outputs
     "objective_comparison": "objective_{}_comparison.png",
     "mean_objective_comparison": "mean_objective_{}_comparison.png",
+    # Solution Quality outputs
+    "solution_quality_comparison": "solution_quality_comparison.png",
+    "mean_solution_quality_comparison": "mean_solution_quality_comparison.png",
+    # Barangay analysis outputs
+    "barangay_improvement_histogram": "barangay_improvement_histogram.png",
+    "barangay_hazard_boxplot": "barangay_hazard_boxplot.png",
+    "barangay_summary_bars": "barangay_summary_bars.png",
+    "barangay_top_performers": "barangay_top_performers.png",
+    "barangay_analysis_results": "barangay_analysis_results.txt",
+    # Scenario-specific outputs
+    "scenario_detail": "scenario_{:02d}_barangay_detail.png",
 }
 
 # ==================== STATISTICAL SETTINGS ====================
@@ -118,6 +150,20 @@ OBJECTIVE_SETTINGS = {
     },
 }
 
+# ==================== SOLUTION QUALITY SETTINGS ====================
+
+SOLUTION_QUALITY_SETTINGS = {
+    # Scenario detail generation settings
+    "generate_all_scenarios": True,  # Generate all scenarios or only selected ones
+    "selected_scenarios": [1, 15, 30],  # Used if generate_all_scenarios=False
+    "figure_height_per_barangay": 0.2,  # Inches per barangay in scenario charts
+    "min_scenario_figure_height": 20,  # Minimum height for scenario charts
+    "sort_barangays_by": "hazard_level",  # Options: hazard_level, improvement, name
+    "show_barangay_names": True,  # Show full names or just IDs
+    # Top/bottom performer settings
+    "top_n_performers": 10,  # Number of top/bottom barangays to highlight
+}
+
 # ==================== HELPER FUNCTIONS ====================
 
 
@@ -128,7 +174,7 @@ def get_data_path(data_type):
     Parameters:
     -----------
     data_type : str
-        Type of data ('time', 'fitness', 'memory', 'objectives')
+        Type of data ('time', 'fitness', 'memory', 'objectives', 'solution_quality', etc.)
 
     Returns:
     --------
@@ -179,12 +225,12 @@ def get_columns(data_type):
     Parameters:
     -----------
     data_type : str
-        Type of data ('time', 'fitness', 'memory', 'objectives')
+        Type of data ('time', 'fitness', 'memory', 'objectives', 'solution_quality', etc.)
 
     Returns:
     --------
     dict
-        Dictionary with 'fa' and 'efa' column names
+        Dictionary with column names
     """
     if data_type not in COLUMNS:
         raise ValueError(
