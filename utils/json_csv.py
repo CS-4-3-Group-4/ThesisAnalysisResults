@@ -98,11 +98,15 @@ def json_to_csvs():
                     "Barangay_Name": barangay["barangayName"],
                     "Hazard_Level": barangay["barangayFAScore"]["hazardLevel"],
                     "FA_Allocated": barangay["barangayFAScore"]["allocated"],
-                    "FA_Required": barangay["barangayFAScore"]["required"],
+                    "FA_Ideal": barangay["barangayFAScore"]["ideal"],
                     "EFA_Allocated": barangay["barangayEFAScore"]["allocated"],
-                    "EFA_Required": barangay["barangayEFAScore"]["required"],
-                    "FA_Score": barangay["barangayFAScore"]["score"],
-                    "EFA_Score": barangay["barangayEFAScore"]["score"],
+                    "EFA_Ideal": barangay["barangayEFAScore"]["ideal"],
+                    "FA_Solution_Quality": barangay["barangayFAScore"][
+                        "solutionQuality"
+                    ],
+                    "EFA_Solution_Quality": barangay["barangayEFAScore"][
+                        "solutionQuality"
+                    ],
                     "Percentage_Change": barangay["percentageChange"],
                 }
             )
