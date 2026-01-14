@@ -207,9 +207,68 @@ def run():
         fig3.savefig(output_path_3, dpi=300, bbox_inches="tight")
         print(f"✓ Saved: {output_path_3}")
 
+        # ==================== FIGURE 4: SEPARATE LINE GRAPHS (STACKED) ====================
+        print(f"Creating stacked line graphs for {obj_names[obj_num]}...")
+
+        fig4, (ax_top, ax_bottom) = plt.subplots(2, 1, figsize=(12, 10), sharex=True)
+
+        # Top plot: FA
+        ax_top.plot(
+            df.index + 1,
+            df[obj_cols["fa"]],
+            marker="o",
+            linewidth=2,
+            markersize=4,
+            color=config.COLORS["fa"],
+            label="FA",
+        )
+        ax_top.set_ylabel(f"{obj_names[obj_num]} Score")
+        ax_top.set_title(
+            f"FA: {obj_names[obj_num]}\n({obj_descriptions[obj_num]})",
+            fontweight="bold",
+        )
+        ax_top.legend(loc="upper right")
+        ax_top.grid(True, alpha=1.0)
+
+        # Bottom plot: EFA
+        ax_bottom.plot(
+            df.index + 1,
+            df[obj_cols["efa"]],
+            marker="s",
+            linewidth=2,
+            markersize=4,
+            color=config.COLORS["efa"],
+            label="EFA",
+        )
+        ax_bottom.set_xlabel("Run Number")
+        ax_bottom.set_ylabel(f"{obj_names[obj_num]} Score")
+        ax_bottom.set_title(
+            f"EFA: {obj_names[obj_num]}\n({obj_descriptions[obj_num]})",
+            fontweight="bold",
+        )
+        ax_bottom.legend(loc="upper right")
+        ax_bottom.grid(True, alpha=1.0)
+
+        # # Add overall title
+        # fig4.suptitle(
+        #     f"Separate Comparison: {obj_names[obj_num]}",
+        #     fontsize=14,
+        #     fontweight="bold",
+        #     y=0.995,
+        # )
+
+        fig4.tight_layout()
+
+        # Save figure 4
+        output_filename_4 = f"objective_{obj_num}_separate_comparison.png"
+        output_path_4 = os.path.join(output_dir, output_filename_4)
+        fig4.savefig(output_path_4, dpi=300, bbox_inches="tight")
+        print(f"✓ Saved: {output_path_4}")
+
         plt.close(fig1)
         plt.close(fig2)
         plt.close(fig3)
+        plt.close(fig4)
 
     # ==================== SAVE RESULTS TO TEXT FILE ====================
     print(f"\n{'=' * 50}")
