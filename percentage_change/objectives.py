@@ -8,7 +8,7 @@ import os
 
 
 def run():
-    """Run the multi-objective analysis."""
+    """Run the multi-objective analysis with scenario-by-scenario comparison."""
 
     # ==================== SETUP ====================
 
@@ -108,7 +108,6 @@ def run():
         )
         ax1.legend()
         ax1.grid(True, alpha=1.0)
-        # Let matplotlib automatically determine y-axis limits
 
         fig1.tight_layout()
 
@@ -118,8 +117,8 @@ def run():
         fig1.savefig(output_path_1, dpi=300, bbox_inches="tight")
         print(f"✓ Saved: {output_path_1}")
 
-        # ==================== FIGURE 2: Bar Graph ====================
-        print(f"Creating bar graph for {obj_names[obj_num]}...")
+        # ==================== FIGURE 2: Mean Bar Graph ====================
+        print(f"Creating mean bar graph for {obj_names[obj_num]}...")
         fig2, ax2 = plt.subplots(figsize=(10, 6))
 
         algorithms = ["FA", "EFA"]
@@ -144,7 +143,6 @@ def run():
         ax2.set_title(
             f"FA vs EFA: Mean {obj_names[obj_num]}\n({obj_descriptions[obj_num]})"
         )
-        # Let matplotlib automatically determine y-axis limits with padding
         ax2.set_ylim(0, max(means) * 1.15)
         ax2.grid(True, alpha=1.0, axis="y")
 
@@ -158,8 +156,60 @@ def run():
         fig2.savefig(output_path_2, dpi=300, bbox_inches="tight")
         print(f"✓ Saved: {output_path_2}")
 
+        # ==================== FIGURE 3: SCENARIO-BY-SCENARIO GROUPED BAR CHART ====================
+        print(f"Creating scenario-by-scenario bar graph for {obj_names[obj_num]}...")
+
+        num_scenarios = len(df)
+
+        # Adjust figure width based on number of scenarios
+        fig_width = max(12, num_scenarios * 0.4)
+        fig3, ax3 = plt.subplots(figsize=(fig_width, 7))
+
+        # Set up positions for grouped bars
+        x_positions = np.arange(num_scenarios)
+        bar_width = 0.35
+
+        # Create bars for FA and EFA
+        bars_fa = ax3.bar(
+            x_positions - bar_width / 2,
+            df[obj_cols["fa"]],
+            bar_width,
+            label="FA",
+            color=config.COLORS["fa"],
+            alpha=0.7,
+        )
+
+        bars_efa = ax3.bar(
+            x_positions + bar_width / 2,
+            df[obj_cols["efa"]],
+            bar_width,
+            label="EFA",
+            color=config.COLORS["efa"],
+            alpha=0.7,
+        )
+
+        # Customize the plot
+        ax3.set_xlabel("Scenario Number")
+        ax3.set_ylabel(f"{obj_names[obj_num]} Score")
+        ax3.set_title(
+            f"FA vs EFA: {obj_names[obj_num]} by Scenario\n({obj_descriptions[obj_num]})"
+        )
+        ax3.set_xticks(x_positions)
+        ax3.set_xticklabels(df.index + 1, rotation=45 if num_scenarios > 15 else 0)
+        ax3.legend()
+        ax3.grid(True, alpha=0.3, axis="y")
+
+        fig3.tight_layout()
+
+        # Save figure 3
+        output_filename_3 = f"objective_{obj_num}_scenario_comparison.png"
+        output_path_3 = os.path.join(output_dir, output_filename_3)
+        fig3.savefig(output_path_3, dpi=300, bbox_inches="tight")
+        print(f"✓ Saved: {output_path_3}")
+
         plt.close(fig1)
         plt.close(fig2)
+        plt.close(fig3)
 
     # ==================== SAVE RESULTS TO TEXT FILE ====================
     print(f"\n{'=' * 50}")
